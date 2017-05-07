@@ -1,9 +1,9 @@
 const R = require('ramda')
 const Promise = require('bluebird')
 
-function thread (acc, ...list) {
+function thread (initialValue, ...list) {
   return R.flatten(list)
-    .reduce((acc, fn) => Promise.resolve(fn(acc)), Promise.resolve(acc))
+    .reduce((acc, fn) => acc.then(fn), Promise.resolve(initialValue))
 }
 
 module.exports = thread
