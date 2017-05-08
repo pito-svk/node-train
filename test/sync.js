@@ -20,5 +20,5 @@ test('Two synchronous functions', t => {
                        addThree)
   const expected = 0
 
-  t.is(actual, expected, 'Resulted value is 10')
+  t.is(actual, expected, 'Resulted value is 0')
 })
