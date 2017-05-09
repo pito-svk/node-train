@@ -33,7 +33,6 @@ test('Array as first argument', t => {
   const actual = train([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                         onlyEven, // [2, 4, 6, 8, 10]
                         everyDouble) // [4, 8, 12, 16, 20]
-
   const expected = [4, 8, 12, 16, 20]
 
   t.deepEqual(actual, expected, 'Resulted value is array with doubled even numbers')
