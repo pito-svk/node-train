@@ -27,8 +27,8 @@ test('Array as first argument', t => {
   const double = x => 2 * x
   const even = x => x % 2 === 0
 
-  const everyDouble = arr => arr.map(double)
   const onlyEven = arr => arr.filter(even)
+  const everyDouble = arr => arr.map(double)
 
   const actual = train([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                         onlyEven, // [2, 4, 6, 8, 10]
