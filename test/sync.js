@@ -5,7 +5,7 @@ test('One synchronous function', t => {
   const addTwo = x => x + 2
 
   const actual = train(5,
-                       addTwo)
+                       addTwo) // 7
   const expected = 7
 
   t.is(actual, expected, 'Resulted value is 7')
@@ -16,8 +16,8 @@ test('Two synchronous functions', t => {
   const negative = x => -x
 
   const actual = train(3,
-                       negative,
-                       addThree)
+                       negative, // -3
+                       addThree) // 0
   const expected = 0
 
   t.is(actual, expected, 'Resulted value is 0')
@@ -31,8 +31,8 @@ test('Array as first argument', t => {
   const onlyEven = arr => arr.filter(even)
 
   const actual = train([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-                        onlyEven,
-                        everyDouble)
+                        onlyEven, // [2, 4, 6, 8, 10]
+                        everyDouble) // [4, 8, 12, 16, 20]
 
   const expected = [4, 8, 12, 16, 20]
 
