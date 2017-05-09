@@ -6,12 +6,12 @@ Inspired by Clojure's ["thread-last" macro](https://clojuredocs.org/clojure.core
 
 ## Installation
 
-Using npm:
+Npm:
 ```sh
-npm i node-train
+$ npm i node-train
 ```
 
-Using yarn:
+Yarn:
 ```sh
-yarn add node-train
+$ yarn add node-train
 ```
