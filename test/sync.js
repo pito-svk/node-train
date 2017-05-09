@@ -22,3 +22,19 @@ test('Two synchronous functions', t => {
 
   t.is(actual, expected, 'Resulted value is 0')
 })
+
+test('Array as first argument', t => {
+  const double = x => 2 * x
+  const even = x => x % 2 === 0
+
+  const everyDouble = arr => arr.map(double)
+  const onlyEven = arr => arr.filter(even)
+
+  const actual = train([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                        onlyEven,
+                        everyDouble)
+
+  const expected = [4, 8, 12, 16, 20]
+
+  t.deepEqual(actual, expected, 'Resulted value is array with doubled even numbers')
+})
