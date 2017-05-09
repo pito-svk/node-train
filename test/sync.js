@@ -38,3 +38,21 @@ test('Array as first argument', t => {
 
   t.deepEqual(actual, expected, 'Resulted value is array with doubled even numbers')
 })
+
+test('Operation on array that returns non array', t => {
+  const triple = x => 3 * x
+
+  const everyTriple = arr => arr.map(triple)
+  const everyAbsolute = arr => arr.map(Math.abs)
+  const unique = arr => Array.from(new Set(arr))
+  const first = arr => arr[0]
+
+  const actual = train([2, 5, 3, 1, 1, -2],
+                        everyTriple, // [6, 15, 9, 3, 3, -6]
+                        everyAbsolute, // [6, 15, 9, 3, 3, 6]
+                        unique, // [6, 15, 9, 3]
+                        first) // 6
+  const expected = 6
+
+  t.is(actual, expected, 'Resulted value is 6')
+})
