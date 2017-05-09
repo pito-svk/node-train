@@ -15,3 +15,32 @@ Yarn:
 ```sh
 $ yarn add node-train
 ```
+
+## Use case
+
+```javascript
+const train = require('node-train')
+const _ = require('lodash')
+
+const calls =
+  await train(callsResponse.items,
+    addTotalSpendingPerCall,
+    addShopNamePerCall,
+    addCustomerPerCall,
+    addBranchIdPerCall,
+    addProductDescriptionPerCall,
+    _.last)
+
+return calls
+
+// same as
+const calls = callsResponse.items
+const callsWithTotalSpending = await addTotalSpendingPerCall(calls)
+const callsWithTotalSpendingAndShopName = await addShopNamePerCall(callsWithTotalSpending)
+const callsWithTotalSpendingAndShopNameAndCustomer = await addCustomerPerCall(callsWithTotalSpendingAndShopName)
+const callsWithTotalSpendingAndShopNameAndCustomerAndBranchId = await addBranchIdPerCall(callsWithTotalSpendingAndShopNameAndCustomer)
+const callsWithTotalSpendingAndShopNameAndCustomerAndBranchIdAndProductDescription = await addProductDescriptionPerCall(callsWithTotalSpendingAndShopNameAndCustomerAndBranchId)
+const lastCallWithTotalSpendingAndShopNameAndCustomerAndBranchIdAndProductDescription = _.last(callsWithTotalSpendingAndShopNameAndCustomerAndBranchIdAndProductDescription)
+
+return lastCallWithTotalSpendingAndShopNameAndCustomerAndBranchIdAndProductDescription
+```
