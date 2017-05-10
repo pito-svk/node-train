@@ -20,9 +20,8 @@ test('Array asynchronous operations', async t => {
   const tripleAfter50msPromises = arr => arr.map(triplePromise)
 
   const sort = arr => arr.sort()
-  const sortPromise = arr => new Promise(resolve => setTimeout(() => resolve(sort(arr)), 50))
+  const asyncSort = arr => new Promise(resolve => setTimeout(() => resolve(sort(arr)), 50))
 
-  const asyncSort = arr => sortPromise(arr)
   const everyTriple = arr => Promise.all(tripleAfter50msPromises(arr))
 
   const actual = await train([9, 4, 5, 6, 7],
