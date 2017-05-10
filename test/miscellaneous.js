@@ -21,3 +21,10 @@ test('Train with null', t => {
 
   t.is(actual, expected, 'Resulted value is null')
 })
+
+test('Train with empty array', t => {
+  const actual = train([])
+  const expected = []
+
+  t.deepEqual(actual, expected, 'Resulted value is empty array')
+})
