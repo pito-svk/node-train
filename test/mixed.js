@@ -36,3 +36,20 @@ test('Synchronous function is in the middle', async t => {
 
   t.is(actual, expected, 'Resulted value is 4')
 })
+
+test('Synchronous function at the end', async t => {
+  const double = x => 2 * x
+  const triple = x => 3 * x
+  const subtractFour = x => x - 4
+
+  const doubleAfter50ms = x => new Promise(resolve => setTimeout(() => resolve(double(x)), 50))
+  const tripleAfter50ms = x => new Promise(resolve => setTimeout(() => resolve(triple(x)), 50))
+
+  const actual = await train(9,
+                             doubleAfter50ms, // 18
+                             tripleAfter50ms, // 54
+                             subtractFour) // 50
+  const expected = 50
+
+  t.is(actual, expected, 'Resulted value is 50')
+})
