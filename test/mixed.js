@@ -31,7 +31,7 @@ test('Synchronous function is in the middle', async t => {
   const actual = await train({ x: [1, 2, 3], y: 'foo' },
                              addAttrAfter50ms('z', 4), // { x: [1, 2, 3], y: 'foo', z: 4 }
                              removeAttr('x'), // { y: 'foo', z: 4 }
-                             getKeyAfter50ms('z')) // 'foo'
+                             getKeyAfter50ms('z')) // 4
   const expected = 4
 
   t.is(actual, expected, 'Resulted value is 4')
