@@ -3,9 +3,7 @@ const train = require('../train')
 
 test('One asynchronous function', async t => {
   const double = x => 2 * x
-  const doublePromise = x => new Promise(resolve => setTimeout(() => resolve(double(x)), 50))
-
-  const doubleAfter50ms = x => doublePromise(x)
+  const doubleAfter50ms = x => new Promise(resolve => setTimeout(() => resolve(double(x)), 50))
 
   const actual = await train(5,
                              doubleAfter50ms) // 10
@@ -16,8 +14,8 @@ test('One asynchronous function', async t => {
 
 test('Array asynchronous operations', async t => {
   const triple = x => 3 * x
-  const triplePromise = x => new Promise(resolve => setTimeout(() => resolve(triple(x)), 50))
-  const tripleAfter50msPromises = arr => arr.map(triplePromise)
+  const tripleAfter50ms = x => new Promise(resolve => setTimeout(() => resolve(triple(x)), 50))
+  const tripleAfter50msPromises = arr => arr.map(tripleAfter50ms)
 
   const sort = arr => arr.sort()
   const asyncSort = arr => new Promise(resolve => setTimeout(() => resolve(sort(arr)), 50))
