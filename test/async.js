@@ -9,7 +9,6 @@ test('One asynchronous function', async t => {
 
   const actual = await train(5,
                              doubleAfter50ms) // 10
-
   const expected = 10
 
   t.is(actual, expected, 'Resulted value is 10')
