@@ -1,3 +1,18 @@
+# Deprecated
+Can use `R.composeP` instead, for example:
+
+```javascript
+const R = require('ramda')
+
+const calls = 
+  await R.composeP(R.last,
+                   addProductDescriptionPerCall,
+                   addBranchIdPerCall,
+                   addCustomerPerCall,
+                   addShopNamePerCall,
+                   addTotalSpendingPerCall)(callsResponse.items)
+```
+
 # node-train
 
 [![npm version](https://badge.fury.io/js/node-train.svg)](https://badge.fury.io/js/node-train)
